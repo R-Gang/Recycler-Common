@@ -1,6 +1,6 @@
-# Tools-Utils
+# Recycler-Common
 
-## 实用工具类
+## 试图列表组件管理
 
 引入方式：
 
@@ -12,14 +12,14 @@
     }
 
     dependencies {
-         implementation 'com.github.R-Gang:Tools-Utils:latest.integration'
+         implementation 'com.github.R-Gang:Recycler-Common:latest.integration'
     }
 
 ## Usage
 
-### 初始化实用工具
+### 初始化RecyclerView
 
 ```
-    initToolsUtils(this)
+    LayoutManager.instance?.init(this) // 初始化RecyclerView
 ```
 
