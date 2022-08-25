@@ -1,0 +1,3 @@
+rootProject.name = "Recycler-Common"
+include ':app',
+        ':recyclerview'// 试图列表组件管理
