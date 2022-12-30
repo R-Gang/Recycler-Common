@@ -52,7 +52,7 @@ object Dependencies {
 
     const val androidx_multidex = "androidx.multidex:multidex:2.0.1" // Dex处理
 
-    const val toolsUtils = "com.github.R-Gang:Tools-Utils:v1.0.1-beta" // 实用工具类
+    const val toolsUtils = "com.github.R-Gang:Tools-Utils:v1.0.1-beta.2" // 实用工具类
 
     const val recyclerview = "androidx.recyclerview:recyclerview:1.2.1@aar" // recyclerview
     const val flexbox = "com.google.android:flexbox:2.0.1"  //流式布局
@@ -68,7 +68,11 @@ object Dependencies {
         it.maven { url = URI("https://maven.aliyun.com/repository/central") }
         it.maven { url = URI("https://maven.aliyun.com/repository/google") }
         it.maven { url = URI("https://maven.aliyun.com/repository/jcenter") }
-        it.maven { url = URI("https://jitpack.io") }
+        it.maven {
+            url = URI("https://jitpack.io")
+            val authToken = "jp_7hqsbgvlrlh8sua6dainpc08j4"
+            credentials { username = authToken }
+        }
         it.maven { url = URI("https://dl.google.com/dl/android/maven2/") }
         it.maven { url = URI("https://maven.youzanyun.com/repository/maven-releases") }
         it.maven { url = URI("https://maven.google.com") }

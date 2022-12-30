@@ -31,35 +31,31 @@ abstract class BaseVMAdapter<VB : ViewDataBinding> :
         instanceofObj(`object`)
     }
 
-    //为butter准备的构造
-    constructor(datas: MutableList<*>, `object`: Any) {
+    constructor(
+        datas: MutableList<*>? = mutableListOf<Any>(),
+        `object`: Any
+    ) : this(
+        `object`
+    ) {
         this.datas.clear()
         this.datas.addAll(datas as ArrayList<*>)
-        instanceofObj(`object`)
     }
 
     constructor(
-        datas: MutableList<*>,
+        datas: MutableList<*>? = mutableListOf<Any>(),
+        `object`: Any,
+        onItemClick1: ViewOnItemClick,
+    ) : this(datas, `object`) {
+        onItemClick = onItemClick1
+    }
+
+    constructor(
+        datas: MutableList<*>? = mutableListOf<Any>(),
         `object`: Any,
         onItemClick1: ViewOnItemClick,
         onItemLongClick: ViewOnItemLongClick,
-    ) {
-        this.datas.clear()
-        this.datas.addAll(datas as ArrayList<*>)
-        instanceofObj(`object`)
-        onItemClick = onItemClick1
+    ) : this(datas, `object`, onItemClick1) {
         longClick = onItemLongClick
-    }
-
-    constructor(
-        datas: MutableList<*>,
-        `object`: Any,
-        onItemClick1: ViewOnItemClick,
-    ) {
-        this.datas.clear()
-        this.datas.addAll(datas as ArrayList<*>)
-        instanceofObj(`object`)
-        onItemClick = onItemClick1
     }
 
     private fun instanceofObj(`object`: Any) {
@@ -84,8 +80,10 @@ abstract class BaseVMAdapter<VB : ViewDataBinding> :
     ): BaseViewHolder<VB> {
         val res: Int = layoutResId
         val binding =
-            DataBindingUtil.inflate(LayoutInflater.from(viewGroup.context),
-                res, viewGroup, false) as VB
+            DataBindingUtil.inflate(
+                LayoutInflater.from(viewGroup.context),
+                res, viewGroup, false
+            ) as VB
         return BaseViewHolder(binding, onItemClick, longClick)
     }
 
@@ -110,8 +108,10 @@ abstract class BaseVMAdapter<VB : ViewDataBinding> :
         return if (datas.isEmpty()) 0 else datas.size
     }
 
-    open fun update(pdata: List<*>?) {
-        this.datas.clear()
+    open fun update(pdata: List<*>?, isClear: Boolean = true) {
+        if (isClear) {
+            this.datas.clear()
+        }
         this.datas.addAll(pdata as ArrayList<*>)
         notifyDataSetChanged()
     }

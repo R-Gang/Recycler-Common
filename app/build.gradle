@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'// 注解的插件，添加此组件使用@Bindable注解
 }
 
 android {
@@ -15,18 +14,6 @@ android {
         versionName Android.versionName
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-
-        // Java开发的情况
-        /*javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }*/
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-            }
-        }
 
     }
 
@@ -67,6 +54,6 @@ dependencies {
 
     // recyclerview
     implementation project(path: ':recyclerview')
-    //implementation 'com.github.R-Gang:Recycler-Common:1.0.0@aar'
+    //implementation 'com.github.R-Gang:Recycler-Common:v0.1.0-beta@aar'
 
 }

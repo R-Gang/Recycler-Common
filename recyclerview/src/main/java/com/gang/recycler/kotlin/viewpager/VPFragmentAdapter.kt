@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 /**
  * Created by haoruigang on 2016/1/20.
  */
-class VPFragmentAdapter(
+open class VPFragmentAdapter(
     fm: FragmentManager,
 ) : FragmentPagerAdapter(fm) {
 

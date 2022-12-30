@@ -13,7 +13,7 @@ import kotlin.math.abs
 /**
  * 禁止左右滑动,解决ScrollView嵌套ViewPager不显示和出现空白部分
  */
-class NoScrollViewPager : ViewPager {
+open class NoScrollViewPager : ViewPager {
 
     // ---------------禁止左右滑动---------------
     private var noScroll = true

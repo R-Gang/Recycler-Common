@@ -12,7 +12,7 @@ import com.google.android.flexbox.JustifyContent
 /**
  * Date: 2019/4/10
  * Author: haoruigang
- * Description: xrecyclerview 管理
+ * Description: recyclerview 管理
  */
 class LayoutManager {
 
@@ -45,6 +45,23 @@ class LayoutManager {
         isVertical: Boolean,
     ): GridLayoutManager {
         val manager = GridLayoutManager(mContext, span)
+        manager.orientation =
+            if (isVertical) RecyclerView.VERTICAL else LinearLayoutManager.HORIZONTAL
+        recyclerView.layoutManager = manager
+        return manager
+    }
+
+
+    fun initRecyclerFullyGrid(recyclerView: RecyclerView, span: Int) {
+        initRecyclerFullyGrid(recyclerView, span, true)
+    }
+
+    fun initRecyclerFullyGrid(
+        recyclerView: RecyclerView,
+        span: Int,
+        isVertical: Boolean,
+    ): FullyGridLayoutManager {
+        val manager = FullyGridLayoutManager(mContext, span)
         manager.orientation =
             if (isVertical) RecyclerView.VERTICAL else LinearLayoutManager.HORIZONTAL
         recyclerView.layoutManager = manager
