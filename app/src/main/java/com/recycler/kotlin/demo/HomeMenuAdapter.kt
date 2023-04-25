@@ -15,7 +15,7 @@ import com.recycler.kotlin.databinding.ItemHomeMenuBinding
  * @CreateDate:     2020/8/5 16:00
  */
 class HomeMenuAdapter(
-    datas: MutableList<*>, `object`: Any, override val layoutResId: Int,
+    datas: MutableList<*>, `object`: Any,
 ) :
     BaseVMAdapter<ItemHomeMenuBinding>(datas, `object`) {
 

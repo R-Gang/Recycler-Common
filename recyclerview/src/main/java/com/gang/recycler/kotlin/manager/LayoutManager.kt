@@ -23,11 +23,11 @@ class LayoutManager {
         return this
     }
 
-    fun initRecyclerView(recyclerView: RecyclerView) {
-        initRecyclerView(recyclerView, true)
-    }
 
-    fun initRecyclerView(recyclerView: RecyclerView, isVertical: Boolean): LinearLayoutManager {
+    fun initRecyclerView(
+        recyclerView: RecyclerView,
+        isVertical: Boolean = true
+    ): LinearLayoutManager {
         val manager = LinearLayoutManager(mContext)
         manager.orientation =
             if (isVertical) RecyclerView.VERTICAL else LinearLayoutManager.HORIZONTAL
@@ -35,14 +35,21 @@ class LayoutManager {
         return manager
     }
 
-    fun initRecyclerGrid(recyclerView: RecyclerView, span: Int) {
-        initRecyclerGrid(recyclerView, span, true)
+    fun initRecyclerPager(
+        recyclerView: RecyclerView,
+        isVertical: Boolean = true
+    ): PagerLayoutManager {
+        val manager = PagerLayoutManager(mContext)
+        manager.orientation =
+            if (isVertical) RecyclerView.VERTICAL else LinearLayoutManager.HORIZONTAL
+        recyclerView.layoutManager = manager
+        return manager
     }
 
     fun initRecyclerGrid(
         recyclerView: RecyclerView,
         span: Int,
-        isVertical: Boolean,
+        isVertical: Boolean = true,
     ): GridLayoutManager {
         val manager = GridLayoutManager(mContext, span)
         manager.orientation =
@@ -51,15 +58,10 @@ class LayoutManager {
         return manager
     }
 
-
-    fun initRecyclerFullyGrid(recyclerView: RecyclerView, span: Int) {
-        initRecyclerFullyGrid(recyclerView, span, true)
-    }
-
     fun initRecyclerFullyGrid(
         recyclerView: RecyclerView,
         span: Int,
-        isVertical: Boolean,
+        isVertical: Boolean = true,
     ): FullyGridLayoutManager {
         val manager = FullyGridLayoutManager(mContext, span)
         manager.orientation =
@@ -71,12 +73,15 @@ class LayoutManager {
     /**
      * 流式布局recyclerView
      */
-    fun initFlexbox(recyclerView: RecyclerView) {
+    fun initFlexbox(recyclerView: RecyclerView, isDefault: Boolean = true): FlexboxLayoutManager {
         val layoutManager = FlexboxLayoutManager(mContext)
-        layoutManager.flexDirection = FlexDirection.ROW
-        layoutManager.justifyContent = JustifyContent.FLEX_START
-        layoutManager.flexWrap = FlexWrap.WRAP
-        recyclerView.layoutManager = layoutManager
+        if (isDefault) {
+            layoutManager.flexDirection = FlexDirection.ROW
+            layoutManager.justifyContent = JustifyContent.FLEX_START
+            layoutManager.flexWrap = FlexWrap.WRAP
+            recyclerView.layoutManager = layoutManager
+        }
+        return layoutManager
     }
 
     companion object {

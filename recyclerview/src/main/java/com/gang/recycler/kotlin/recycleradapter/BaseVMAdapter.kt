@@ -5,12 +5,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.gang.recycler.kotlin.interfaces.ViewOnItemClick
 import com.gang.recycler.kotlin.interfaces.ViewOnItemLongClick
+import java.lang.reflect.ParameterizedType
 
 /**
  * @CreateDate:     2022/7/15 10:54
@@ -78,12 +78,7 @@ abstract class BaseVMAdapter<VB : ViewDataBinding> :
         viewGroup: ViewGroup,
         viewType: Int,
     ): BaseViewHolder<VB> {
-        val res: Int = layoutResId
-        val binding =
-            DataBindingUtil.inflate(
-                LayoutInflater.from(viewGroup.context),
-                res, viewGroup, false
-            ) as VB
+        val binding = initViewBinding(viewGroup) as VB
         return BaseViewHolder(binding, onItemClick, longClick)
     }
 
@@ -101,8 +96,6 @@ abstract class BaseVMAdapter<VB : ViewDataBinding> :
         context: Context,
     )
 
-    abstract val layoutResId: Int
-
     //获取数据的数量
     override fun getItemCount(): Int {
         return if (datas.isEmpty()) 0 else datas.size
@@ -119,7 +112,7 @@ abstract class BaseVMAdapter<VB : ViewDataBinding> :
 }
 
 class BaseViewHolder<VB : ViewDataBinding>(
-    var binding: VB,
+    binding: VB,
     var onItemClick: ViewOnItemClick?,
     var longClick: ViewOnItemLongClick?,
 ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener, View.OnLongClickListener {
@@ -139,4 +132,21 @@ class BaseViewHolder<VB : ViewDataBinding>(
         binding.root.setOnClickListener(this)
         binding.root.setOnLongClickListener(this)
     }
+}
+
+/**
+ * 初始化 [BaseVMAdapter] 中的 [ViewDataBinding]
+ * 适用于范型参数为 [ViewDataBinding] 的 [Adapter]
+ */
+fun <VB : ViewDataBinding> BaseVMAdapter<VB>.initViewBinding(
+    container: ViewGroup,
+): VB? {
+    var viewBinding: VB? = null
+    val type = javaClass.genericSuperclass
+    if (type is ParameterizedType) {
+        val clazz = type.actualTypeArguments[0] as? Class<VB>
+        val method = clazz?.getMethod("inflate", LayoutInflater::class.java)
+        viewBinding = (method?.invoke(null, LayoutInflater.from(container.context)) as? VB)
+    }
+    return viewBinding
 }

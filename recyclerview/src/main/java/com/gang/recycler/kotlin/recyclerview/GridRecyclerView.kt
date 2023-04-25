@@ -8,11 +8,14 @@ import android.view.animation.GridLayoutAnimationController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+
 /**
  * RecyclerView with support for grid animations.
  *
- * 弹出带动画
- * Based on: 2018-7-30 16:33:20 haoruigang
+ * @CreateDate:     2018-7-30 16:33:20
+ * @Author:         haoruigang
+ * @ClassName:
+ * @Description:    网格弹出带动画
  */
 class GridRecyclerView : RecyclerView {
 

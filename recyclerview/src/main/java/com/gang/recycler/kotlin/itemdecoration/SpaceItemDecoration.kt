@@ -10,12 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 /**
- * good programmer.
- *
- * @data : 2018-01-11 下午 03:28
- * @author: futia
- * @email : futianyi1994@126.com
- * @description : RecyclerView 设置间距
+ *  RecyclerView 设置间距
  */
 class SpaceItemDecoration : ItemDecoration {
     //限定为LINEARLAYOUT,GRIDLAYOUT,STAGGEREDGRIDLAYOUT

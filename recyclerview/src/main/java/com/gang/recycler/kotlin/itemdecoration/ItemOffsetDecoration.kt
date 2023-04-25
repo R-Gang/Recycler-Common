@@ -5,7 +5,9 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
-// 设置间距
+/**
+ *  RecyclerView 设置间距
+ */
 class ItemOffsetDecoration : ItemDecoration {
 
     private var left: Int

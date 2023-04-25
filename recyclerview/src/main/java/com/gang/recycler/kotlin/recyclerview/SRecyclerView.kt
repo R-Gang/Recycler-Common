@@ -204,11 +204,11 @@ class SRecyclerView : FrameLayout {
     }
 
     companion object {
-        private const val COLOR_BG = Color.GRAY // 背景色
-        private const val DRAG_RATE = 2.5f // 下拉上拉的粘性（数值越大越难下拉）
-        private const val TEXT_COLOR = -0x666667 // 提示文字颜色
-        private const val TEXT_SIZE = 12f // 提示文字大小
-        private const val TEXT_MARGIN = 150f // 提示文字和 RecyclerView 的间距
+        val COLOR_BG = Color.TRANSPARENT // 背景色
+        val DRAG_RATE = 2.5f // 下拉上拉的粘性（数值越大越难下拉）
+        val TEXT_COLOR = -0x666667 // 提示文字颜色
+        val TEXT_SIZE = 12f // 提示文字大小
+        val TEXT_MARGIN = 150f // 提示文字和 RecyclerView 的间距
 
     }
 }

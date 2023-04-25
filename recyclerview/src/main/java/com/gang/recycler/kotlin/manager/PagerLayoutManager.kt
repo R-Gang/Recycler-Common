@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView.OnChildAttachStateChangeListene
 import com.gang.recycler.kotlin.interfaces.OnPageChangeListener
 
 /**
- * LayoutManager 一次只能滑一页
+ * LayoutManager Item一次滑一页
  */
-class PagerLayoutManager internal constructor(context: Context?) : LinearLayoutManager(context),
+open class PagerLayoutManager internal constructor(context: Context?) :
+    LinearLayoutManager(context),
     OnChildAttachStateChangeListener {
     val mPagerSnapHelper: PagerSnapHelper = PagerSnapHelper()
     var mOnPageChangeListener: OnPageChangeListener? = null

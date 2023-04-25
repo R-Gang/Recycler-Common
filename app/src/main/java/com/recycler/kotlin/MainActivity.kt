@@ -41,11 +41,7 @@ class MainActivity : AppCompatActivity() {
         homeMenu.add(HomeIcon(2, R.mipmap.cate3, "产品中心"))
         homeMenu.add(HomeIcon(3, R.mipmap.cate4, "营销网络"))
         LayoutManager.instance?.initRecyclerGrid(mainBinding.recyclerView, 4)
-        mainBinding.recyclerView.adapter = HomeMenuAdapter(
-            homeMenu,
-            this,
-            R.layout.item_home_menu
-        )
+        mainBinding.recyclerView.adapter = HomeMenuAdapter(homeMenu, this)
 
     }
 

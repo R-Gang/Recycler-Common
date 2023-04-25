@@ -52,10 +52,10 @@ object Dependencies {
 
     const val androidx_multidex = "androidx.multidex:multidex:2.0.1" // Dex处理
 
-    const val toolsUtils = "com.github.R-Gang:Tools-Utils:v1.0.1-beta.2" // 实用工具类
+    const val toolsUtils = "com.github.R-Gang:Tools-Utils:v1.0.1-beta.3" // 实用工具类
 
     const val recyclerview = "androidx.recyclerview:recyclerview:1.2.1@aar" // recyclerview
-    const val flexbox = "com.google.android:flexbox:2.0.1"  //流式布局
+    const val flexbox = "com.google.android.flexbox:flexbox:3.0.0"  //流式布局
 
     const val xrecyclerview = "com.jcodecraeer:xrecyclerview:1.6.0" // xrecyclerview
 
